@@ -64,6 +64,14 @@ if (WEBGL.isWebGLAvailable()) {
 
   const light = new THREE.DirectionalLight(0xffffff, 0.5);
   scene.add(light);
+
+  // Handle window resize event
+  window.addEventListener('resize', onWindowResize, false);
+  function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }
 } else {
   var warning = WEBGL.getWebGLErrorMessage();
   document.body.appendChild(warning);
