@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   mode: 'production',
@@ -11,10 +11,11 @@ module.exports = {
     maxEntrypointSize: 1024000,
     maxAssetSize: 1024000,
   },
+  devtool: 'inline-source-map',
   devServer: {
-    publicPath: '/public/',
+    static: './public',
     compress: true,
     port: 3000,
     hot: true,
   },
-}
+};
