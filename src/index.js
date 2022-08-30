@@ -39,6 +39,25 @@ if (WEBGL.isWebGLAvailable()) {
   };
 
   animate();
+
+  const createShape = () => {
+    let radius = 15;
+    let height = 15;
+    let segments = 32;
+    let color = 0xddddff;
+
+    // an object consists of three things.
+    const geometry = new THREE.ConeGeometry(radius, height, segments); // geometry of the shape
+    const material = new THREE.MeshPhongMaterial({ color }); //what is the shape made out of and how does it reflect light
+    const shape = new THREE.Mesh(geometry, material); //A mesh is a combination of the geometry and material.
+
+    shape.rotateX(0.5);
+    shape.rotateZ(0.5);
+
+    scene.add(shape); // add mesh to scene
+  };
+
+  createShape();
 } else {
   var warning = WEBGL.getWebGLErrorMessage();
   document.body.appendChild(warning);
